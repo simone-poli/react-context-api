@@ -8,29 +8,29 @@ import SingleProduct from "./pages/SingleProduct"
 
 
 
-function App(){
-  return(
-  <>
-  
-  <BrowserRouter>
-  <Routes>
+function App() {
+  return (
+    <>
 
-<Route Component={DefaultLayout}>
+      <BrowserRouter>
+        <Routes>
 
-<Route path="/" Component={HomePage}></Route>
-<Route path="/contacts" Component={InformationPage}></Route>
-<Route path="/products" Component={Products}></Route>
-<Route path="/products/:id" Component={SingleProduct}></Route>
+          <Route Component={DefaultLayout}>
 
-</Route>
+            <Route path="/" Component={HomePage}></Route>
+            <Route path="/contacts" Component={InformationPage}></Route>
+            <Route path="/products" Component={Products}></Route>
+            <Route path="/products/:id" Component={SingleProduct}></Route>
+
+          </Route>
 
 
 
-  </Routes>
-  
-  
-  </BrowserRouter>
-  </>
+        </Routes>
+
+
+      </BrowserRouter>
+    </>
   )
 }
 
