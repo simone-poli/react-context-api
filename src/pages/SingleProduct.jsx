@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 
@@ -8,12 +8,19 @@ export default function SingleProduct() {
     const { id } = useParams();
     const url = `https://fakestoreapi.com/products/${id}`;
     const [product, setProduct] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.error){
+                    console.log('NOT FOUND')
+                    navigate ('/notfound')
+
+
+                }
                 setProduct(data)
             })
     }, [])
@@ -35,6 +42,7 @@ export default function SingleProduct() {
                         <p className="card-text text-success">${product.price}</p>
                     </div>
 
+                <button onClick={() => navigate(-1)}>Back</button>
 
                 </div>
             </div>

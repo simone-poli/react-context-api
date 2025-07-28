@@ -4,7 +4,7 @@ import InformationPage from "./pages/InformationPage"
 import Products from "./pages/Products"
 import DefaultLayout from "./layout/DefaultLayout"
 import SingleProduct from "./pages/SingleProduct"
-
+import { GlobalProvider } from "./context/GlobalContext"
 
 
 
@@ -12,24 +12,29 @@ function App() {
   return (
     <>
 
-      <BrowserRouter>
-        <Routes>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
 
-          <Route Component={DefaultLayout}>
+            <Route Component={DefaultLayout}>
 
-            <Route path="/" Component={HomePage}></Route>
-            <Route path="/contacts" Component={InformationPage}></Route>
-            <Route path="/products" Component={Products}></Route>
-            <Route path="/products/:id" Component={SingleProduct}></Route>
-
-          </Route>
-
+              <Route path="/" Component={HomePage}></Route>
+              <Route path="/contacts" Component={InformationPage}></Route>
+              <Route path="/products" Component={Products}></Route>
+              <Route path="/products/:id" Component={SingleProduct}></Route>
 
 
-        </Routes>
 
 
-      </BrowserRouter>
+            </Route>
+
+
+
+          </Routes>
+
+
+        </BrowserRouter>
+      </GlobalProvider>
     </>
   )
 }

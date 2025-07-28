@@ -1,19 +1,12 @@
-import { useState, useEffect } from 'react';
+
 import ProductsList from '../components/ProductsList'
-
-
+import { useGlobalContext } from '../context/GlobalContext'
 
 
 export default function Products() {
+    const {products} = useGlobalContext()
 
-    const url = "https://fakestoreapi.com/products"
-    const [products, setProducts] = useState([])
-
-    useEffect(() => {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => setProducts(data))
-    }, [])
+  
 
     return (
         <>
@@ -22,7 +15,7 @@ export default function Products() {
                     <div className="row row-cols-1 row-cols-md-5 g-3">
                         {products.map((product) => {
                             return (
-                                <ProductsList product= {product} />
+                                <ProductsList product= {product} key={product.id} />
                             )
                         }
                         )}
